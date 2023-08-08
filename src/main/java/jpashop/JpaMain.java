@@ -3,12 +3,12 @@ package jpashop;
 import jpashop.domain.car.ElectricCar;
 import jpashop.domain.car.OilCar;
 import jpashop.domain.item.Book;
+import jpashop.executor.ProxyExec;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import javax.transaction.Transactional;
 
 public class JpaMain {
     public static void main(String[] args) {
@@ -19,11 +19,19 @@ public class JpaMain {
         tx.begin();
 
         try {
-            carTest(em);
-            itemTest(em);
+            //carTest(em);
+            //itemTest(em);
+            //em.flush();
+            //em.clear();
+
+            ProxyExec proxyExec = new ProxyExec(em);
+            //proxyExec.typeCheck();
+            //proxyExec.lazyAndEagerCheck();
+            //proxyExec.CascadeAndOrphanObjectCheck();
+            proxyExec.CascadeAndOrphanObjectCheckV2();
+
             em.flush();
             em.clear();
-
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
@@ -59,7 +67,6 @@ public class JpaMain {
         em.persist(oilCar2);
     }
 
-    @Transactional
     public static void itemTest(EntityManager em){
         Book book = new Book();
         book.setAuthor("dragon");

@@ -19,7 +19,7 @@ public class Member extends BaseEntity {
 //    private Long teamId;
 
     // 아래 방식은 테이블 연관관계(외래키-PK)가 객체설계를 따른다.
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL) // FetchType.LAZY =>
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) // FetchType.LAZY =>
     @JoinColumn(name = "TEAM_ID") // Member테이블의 TEAM_ID(foreign key)
     private Team team;
     public void setTeam(Team team) {
