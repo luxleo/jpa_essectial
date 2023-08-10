@@ -12,7 +12,7 @@ public class OrderItem {
     @Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "ORDER_ITEM_ID")
     private Long id;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "ORDER_ID")
     private Order order;
 

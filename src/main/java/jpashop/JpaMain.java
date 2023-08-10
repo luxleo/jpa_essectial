@@ -3,7 +3,7 @@ package jpashop;
 import jpashop.domain.car.ElectricCar;
 import jpashop.domain.car.OilCar;
 import jpashop.domain.item.Book;
-import jpashop.executor.ProxyExec;
+import jpashop.executor.JpqlLearnExec;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -24,11 +24,20 @@ public class JpaMain {
             //em.flush();
             //em.clear();
 
-            ProxyExec proxyExec = new ProxyExec(em);
+            //ProxyExec proxyExec = new ProxyExec(em);
             //proxyExec.typeCheck();
             //proxyExec.lazyAndEagerCheck();
             //proxyExec.CascadeAndOrphanObjectCheck();
-            proxyExec.CascadeAndOrphanObjectCheckV2();
+            //proxyExec.CascadeAndOrphanObjectCheckV2();
+            //proxyExec.CascadeAndOrphanObjectCheckV3();
+
+            //EmbededTypeExecutor executor = new EmbededTypeExecutor(em);
+            //executor.exec1();
+            //executor.exec2();
+
+            JpqlLearnExec jpqlExec = new JpqlLearnExec(em);
+            //jpqlExec.projection_test();
+            jpqlExec.paging_test();
 
             em.flush();
             em.clear();

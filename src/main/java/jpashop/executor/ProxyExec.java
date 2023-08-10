@@ -99,4 +99,17 @@ public class ProxyExec {
         System.out.println("\n[parent.remove되면 모두가 날라간다.]");
         em.remove(findParent);
     }
+    public void CascadeAndOrphanObjectCheckV3() {
+        Parent parent = new Parent();
+        for (int i = 0; i < 3; i++) {
+            Child child = new Child();
+            child.setName(String.format("%dth child", i));
+            parent.addChild(child);
+        }
+        em.persist(parent);
+        em.flush();
+        em.clear();
+        System.out.println("[Child]의 parent속성의 @ManyToOne(fetch=Fetch.EAGER)로 지정한다, 이후 child를 조회하면 2번의 쿼리가 나간다.");
+        Child child = em.find(Child.class, 1L);
+    }
 }

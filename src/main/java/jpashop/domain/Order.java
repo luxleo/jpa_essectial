@@ -15,7 +15,7 @@ public class Order {
     private Long id;
     //    @Column(name = "MEMBER_ID")
 //    private Long memberId;
-    @ManyToOne // 단방향 만으로 테이블 설계는 끝이난다는것 명심하자
+    @ManyToOne(fetch = FetchType.LAZY) // 단방향 만으로 테이블 설계는 끝이난다는것 명심하자
     @JoinColumn(name = "MEMBER_ID") // FK설정
     private Member member;
     private LocalDateTime orderDate;
