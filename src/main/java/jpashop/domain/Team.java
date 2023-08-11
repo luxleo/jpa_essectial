@@ -17,4 +17,9 @@ public class Team {
     private String name;
     @OneToMany(mappedBy = "team",fetch = FetchType.LAZY) // mappedBy는 참조되는 녀석(이 경우 Member)의 필드의 이름이다.
     private List<Member> members = new ArrayList<>();
+
+    public void addMember(Member member) {
+        this.members.add(member);
+        member.setTeam(this);
+    }
 }

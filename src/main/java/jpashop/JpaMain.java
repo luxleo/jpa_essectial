@@ -37,7 +37,9 @@ public class JpaMain {
 
             JpqlLearnExec jpqlExec = new JpqlLearnExec(em);
             //jpqlExec.projection_test();
-            jpqlExec.paging_test();
+            //jpqlExec.paging_test();
+            //jpqlExec.graph_search_test();
+            jpqlExec.bulk_query_test();
 
             em.flush();
             em.clear();
